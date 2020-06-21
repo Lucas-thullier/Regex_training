@@ -53,7 +53,12 @@ foreach ($day_years_data as $key => $value) {
 		$day_years_data[$key][$key2] = $tri_dimensional_data_array[$compteur][0][$compteur2];
 		$compteur2++;
 	}
-	$compteur2=0;
+	$compteur2 = 0;
 	$compteur++;
 }
-var_dump($day_years_data);
+
+// Transformation du tableau en format JSON et exportation dans un fichier
+$json_day_years_data = json_encode($day_years_data);
+$json_file = fopen("day_years_data.json", "w+");
+fwrite($json_file, $json_day_years_data);
+fclose($json_file);
